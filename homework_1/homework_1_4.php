@@ -16,5 +16,4 @@ switch ($day) {
     break;
   default:
     echo $day . ' Unknown day';
-    break;
 }

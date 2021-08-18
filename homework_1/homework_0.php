@@ -3,9 +3,9 @@
 require 'src/sayHiFunc.php';
 
 const TEST_CONSTANTA = 1;
-$user_name = "Igor";
+$userName = "Igor";
 
 
 if (TEST_CONSTANTA === 1) {
-  echo sayHiFunc($user_name);
+  echo sayHiFunc($userName);
 }

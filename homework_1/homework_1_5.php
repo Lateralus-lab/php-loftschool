@@ -5,7 +5,7 @@ $bmw = [
   'speed' => 120,
   'doors' => 5,
   'years' => '2015',
-  'name' => 'BMW'
+  'name' => 'bmw'
 ];
 
 $toyota = [
@@ -13,7 +13,7 @@ $toyota = [
   'speed' => 140,
   'doors' => 8,
   'years' => '2012',
-  'name' => 'Toyota'
+  'name' => 'toyota'
 ];
 
 $opel = [
@@ -21,11 +21,13 @@ $opel = [
   'speed' => 160,
   'doors' => 2,
   'years' => '2010',
-  'name' => 'Opel'
+  'name' => 'opel'
 ];
 
-$all_cars = [$bmw, $toyota, $opel];
+$allCars = [$bmw, $toyota, $opel];
 
-foreach ($all_cars as $item) {
-  echo 'Car ' . $item['name'] . ': '  .  $item['model'] . ' ' . $item['speed'] . ' ' . $item['doors'] . ' ' . $item['years'] . '<br/>';
+
+
+foreach ($allCars as $item) {
+  echo 'CAR ' . $item['name'] . ': ' . '<br/>'  .  $item['model'] . ' ' . $item['speed'] . ' ' . $item['doors'] . ' ' . $item['years'] . '<br/>';
 }
