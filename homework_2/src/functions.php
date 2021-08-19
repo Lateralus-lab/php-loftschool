@@ -4,8 +4,11 @@
 function strHandler(array $strArray, bool $boolVal)
 {
   $arrToStr = implode(' ', $strArray);
-  $result = implode("<p></p>", $strArray);
+  $result = '';
 
+  foreach ($strArray as $el) {
+    $result .= '<p>' . $el . '</p>';
+  }
   return $boolVal ? $arrToStr : $result;
 }
 

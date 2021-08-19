@@ -7,6 +7,8 @@ $strArray = ['mars', 'saturn', 'earth', 'moon'];
 
 echo strHandler($strArray, false);
 
+die();
+
 # Task 2
 echo calcEverything('+', 1, 2, 3, 5.2);
 echo calcEverything('-', 20, 3, 2);
