@@ -43,7 +43,7 @@ function calcEverything(...$args)
       $result .= ' ' . $val . ' /';
     }
   }
-  return '<br/>' . substr($result, 0, 1) . ' = ' . $sum;
+  return '<br/>' . substr($result, 0, -1) . ' = ' . $sum;
 }
 
 # Task 3

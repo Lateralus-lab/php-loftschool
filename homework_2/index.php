@@ -13,8 +13,6 @@ echo calcEverything('-', 20, 3, 2);
 echo calcEverything('*', 2, 2, 2);
 echo calcEverything('/', 100, 2);
 
-die();
-
 # Task 3
 createTable(8, 8);
 
