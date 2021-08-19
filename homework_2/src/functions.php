@@ -3,13 +3,13 @@
 # Task 1
 function strHandler(array $strArray, bool $boolVal)
 {
-  $arrToStr = implode(' ', $strArray);
-  $result = '';
+  if ($boolVal) {
+    return implode(' ', $strArray);
+  }
 
   foreach ($strArray as $el) {
-    $result .= '<p>' . $el . '</p>';
+    echo '<p>' . $el . '</p>';
   }
-  return $boolVal ? $arrToStr : $result;
 }
 
 # Task 2

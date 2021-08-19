@@ -5,7 +5,7 @@ require 'src/functions.php';
 # Task 1
 $strArray = ['mars', 'saturn', 'earth', 'moon'];
 
-echo strHandler($strArray, false);
+echo strHandler($strArray, true);
 
 # Task 2
 echo calcEverything('+', 1, 2, 3, 5.2);
@@ -26,7 +26,6 @@ $str2 = 'Две бутылки лимонада';
 echo strChange($str1, $str2);
 
 # Task 6
-
 $greeting = 'Hello again!';
 $fileName = 'test.txt';
 
