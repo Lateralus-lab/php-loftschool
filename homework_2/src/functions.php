@@ -3,12 +3,9 @@
 # Task 1
 function strHandler(array $strArray, bool $boolVal)
 {
-  $result = '';
   $arrToStr = implode(' ', $strArray);
+  $result = implode("<p></p>", $strArray);
 
-  foreach ($strArray as $el) {
-    $result .= '<p>' . $el . '</p>';
-  }
   return $boolVal ? $arrToStr : $result;
 }
 
