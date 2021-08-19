@@ -17,31 +17,24 @@ function calcEverything(...$args)
 {
   $operator = array_shift($args);
   $result = 'Result: ';
-  $sum = 0;
 
-  if ($operator === '+') {
-    foreach ($args as $val) {
+  $operator === '*' ? $sum = 1 : $sum = 0;
+
+  foreach ($args as $key => $val) {
+    if ($operator === '+') {
       $sum += $val;
       $result .= ' ' . $val . ' +';
-    }
-  } elseif ($operator === '-') {
-    foreach ($args as $key => $val) {
+    } elseif ($operator === '*') {
+      $sum *= $val;
+      $result .= ' ' . $val . ' *';
+    } elseif ($operator === '-') {
       if ($key === 0) {
         $sum = $val;
       } else {
         $sum -= $val;
       }
       $result .= ' ' . $val . ' -';
-    }
-  } else if ($operator === '*') {
-    $sum = 1;
-
-    foreach ($args as $val) {
-      $sum *= $val;
-      $result .= ' ' . $val . ' *';
-    }
-  } elseif ($operator === '/') {
-    foreach ($args as $key => $val) {
+    } elseif ($operator === '/') {
       if ($key === 0) {
         $sum = $val;
       } else {
@@ -50,7 +43,7 @@ function calcEverything(...$args)
       $result .= ' ' . $val . ' /';
     }
   }
-  return '<br/>' . substr($result, 0, -1) . ' = ' . $sum;
+  return '<br/>' . substr($result, 0, 1) . ' = ' . $sum;
 }
 
 # Task 3

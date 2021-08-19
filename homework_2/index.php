@@ -7,13 +7,13 @@ $strArray = ['mars', 'saturn', 'earth', 'moon'];
 
 echo strHandler($strArray, false);
 
-die();
-
 # Task 2
 echo calcEverything('+', 1, 2, 3, 5.2);
 echo calcEverything('-', 20, 3, 2);
 echo calcEverything('*', 2, 2, 2);
 echo calcEverything('/', 100, 2);
+
+die();
 
 # Task 3
 createTable(8, 8);
