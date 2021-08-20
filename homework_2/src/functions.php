@@ -7,9 +7,7 @@ function strHandler(array $strArray, bool $boolVal)
     return implode(' ', $strArray);
   }
 
-  foreach ($strArray as $el) {
-    return '<p>' . implode(' </p><p>', $strArray) . '</p>';
-  }
+  return '<p>' . implode(' </p><p>', $strArray) . '</p>';
 }
 
 # Task 2
