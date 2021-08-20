@@ -5,7 +5,7 @@ require 'src/functions.php';
 # Task 1
 $strArray = ['mars', 'saturn', 'earth', 'moon'];
 
-echo strHandler($strArray, true);
+echo strHandler($strArray, false);
 
 # Task 2
 echo calcEverything('+', 1, 2, 3, 5.2);
