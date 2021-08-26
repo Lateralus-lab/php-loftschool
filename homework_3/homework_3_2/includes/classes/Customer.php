@@ -3,28 +3,39 @@
 class Customer
 {
 
-  public $db;
+  private $db;
+  private $email;
 
-  public function __construct()
+  public function __construct($email)
   {
-
     $this->db = new Database();
+    $this->email = $email;
   }
 
-  public function isCustomer($email)
+  public function isEmailTaken()
   {
 
     $sql = "SELECT * FROM orders
             WHERE `email` = :email";
 
     $values = [
-      [':email', $email]
+      [':email', $this->email]
     ];
 
-    $result = $this->db->queryDB($sql, Database::EXECUTE, $values);
-
-    var_dump($values);
+    $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
 
     return $result ? true : false;
+  }
+
+  public function addCustomer()
+  {
+    $sql = "INSERT INTO orders (`email`)
+            VALUES (:email)";
+
+    $values = [
+      [':email', $this->email]
+    ];
+
+    $this->db->queryDB($sql, Database::EXECUTE, $values);
   }
 }

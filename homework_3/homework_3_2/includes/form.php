@@ -13,11 +13,14 @@ require('classes/Customer.php');
 $helper = new Helper();
 
 if ($helper->isValidEmail($_POST['email'])) {
-  $email = $_POST['email'];
-  $validCustomer = new Customer();
 
-  if ($validCustomer->isCustomer($email)) {
+  $email = $_POST['email'];
+  $customer = new Customer($email);
+
+  if ($customer->isEmailTaken()) {
     echo 'This email is already taken';
+  } else {
+    $customer->addCustomer();
   }
 }
 
