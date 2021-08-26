@@ -24,13 +24,26 @@ class Customer
 
     $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
 
-    return $result ? true : false;
+    return $result ? $this->incrementOrderCount() : false;
   }
 
   public function addCustomer()
   {
+
     $sql = "INSERT INTO orders (`email`)
             VALUES (:email)";
+
+    $values = [
+      [':email', $this->email]
+    ];
+
+    $this->db->queryDB($sql, Database::EXECUTE, $values);
+  }
+
+  public function incrementOrderCount()
+  {
+    $sql = "UPDATE orders SET order_count = order_count + 1
+            WHERE `email` = :email";
 
     $values = [
       [':email', $this->email]
