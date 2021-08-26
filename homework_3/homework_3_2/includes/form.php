@@ -12,20 +12,33 @@ require('classes/Customer.php');
 
 $helper = new Helper();
 
-if ($helper->isValidEmail($_POST['email'])) {
+$name = $_POST['name'] ?? '';
+$phone = $_POST['phone'] ?? '';
+$email = $_POST['email'] ?? '';
+$street = $_POST['street'] ?? '';
+$home = $_POST['home'] ?? '';
+$part = $_POST['part'] ?? '';
+$appt = $_POST['appt'] ?? '';
+$floor = $_POST['floor'] ?? '';
+$comment = $_POST['comment'] ?? '';
 
-  $email = $_POST['email'];
-  $customer = new Customer($email);
+if ($helper->isEmpty([$name, $phone, $email, $street, $home, $part, $appt, $floor, $comment])) {
+  echo 'All fields are required';
+} else {
+  if ($helper->isValidEmail($_POST['email'])) {
 
-  if ($customer->isEmailTaken()) {
-    echo 'This email is already taken';
-  } else {
-    $customer->addCustomer();
+    $customer = new Customer($email);
+
+    if ($customer->isEmailTaken()) {
+      echo 'This email is already taken';
+    } else {
+      $customer->addCustomer();
+    }
   }
 }
 
-/* if ($helper->isEmpty([$_POST['name'], $_POST['street'], $_POST['home'], $_POST['part'], $_POST['appt'], $_POST['floor']])) { */
-/*   echo 'All fields are required'; */
-/* } */
 
-  /* if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) { */
+
+
+/* $orderId = $customer->getCustomerIdByEmail(); */
+/* echo $orderId; */

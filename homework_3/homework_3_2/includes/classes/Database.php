@@ -32,6 +32,8 @@ class Database
 
     if ($mode !== Database::SELECTSINGLE && $mode !== Database::EXECUTE) {
       throw new Exception('Invalide Mode');
+    } elseif ($mode === Database::SELECTSINGLE) {
+      return $stmt->fetch(PDO::FETCH_ASSOC);
     } else {
       return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

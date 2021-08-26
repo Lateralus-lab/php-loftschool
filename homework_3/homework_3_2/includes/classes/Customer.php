@@ -12,6 +12,7 @@ class Customer
     $this->email = $email;
   }
 
+  // Check if the email exists in the database
   public function isEmailTaken()
   {
 
@@ -22,11 +23,12 @@ class Customer
       [':email', $this->email]
     ];
 
-    $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+    $result = $this->db->queryDB($sql, Database::EXECUTE, $values);
 
     return $result ? $this->incrementOrderCount() : false;
   }
 
+  // Add new customer to the database
   public function addCustomer()
   {
 
@@ -40,6 +42,24 @@ class Customer
     $this->db->queryDB($sql, Database::EXECUTE, $values);
   }
 
+  // Get customer ID by email
+  public function getCustomerIdByEmail()
+  {
+    $sql = "SELECT * FROM orders
+            WHERE `email` = :email";
+
+    $values = [
+      [':email', $this->email]
+    ];
+
+    $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+
+    if ($result > 0) {
+      return $result['id'];
+    }
+  }
+
+  // Increment order count by one
   public function incrementOrderCount()
   {
     $sql = "UPDATE orders SET order_count = order_count + 1
@@ -50,5 +70,7 @@ class Customer
     ];
 
     $this->db->queryDB($sql, Database::EXECUTE, $values);
+
+    return true;
   }
 }
