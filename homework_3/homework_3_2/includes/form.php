@@ -4,12 +4,6 @@ require('classes/Database.php');
 require('classes/Helper.php');
 require('classes/Customer.php');
 
-/* echo '<pre>'; */
-
-/* print_r($_POST); */
-
-/* echo '</pre>'; */
-
 $helper = new Helper();
 
 $name = $_POST['name'] ?? '';
@@ -22,23 +16,27 @@ $appt = $_POST['appt'] ?? '';
 $floor = $_POST['floor'] ?? '';
 $comment = $_POST['comment'] ?? '';
 
+
 if ($helper->isEmpty([$name, $phone, $email, $street, $home, $part, $appt, $floor, $comment])) {
   echo 'All fields are required';
 } else {
+  $address = 'Street ' . $street . ', home ' . $home . ', part ' . $part . ', appt ' . $appt . ', floor ' . $floor;
+
   if ($helper->isValidEmail($_POST['email'])) {
 
     $customer = new Customer($email);
+    $orderId = $customer->getCustomerIdByEmail();
+    $orderDate = date('Y-m-d H:i:s');
+    $orderCount = $customer->getOrderCount();
+
+    $msg = $helper->message($address, $orderId, $orderCount);
+
 
     if ($customer->isEmailTaken()) {
-      echo 'This email is already taken';
+      echo $msg;
     } else {
-      $customer->addCustomer();
+      $customer->addCustomer($name, $phone, $orderDate, $street, $home, $part, $appt, $floor, $comment);
+      echo $msg;
     }
   }
 }
-
-
-
-
-/* $orderId = $customer->getCustomerIdByEmail(); */
-/* echo $orderId; */

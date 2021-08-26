@@ -29,14 +29,23 @@ class Customer
   }
 
   // Add new customer to the database
-  public function addCustomer()
+  public function addCustomer($name, $phone, $orderDate, $street, $home, $part, $appt, $floor, $comment)
   {
 
-    $sql = "INSERT INTO orders (`email`)
-            VALUES (:email)";
+    $sql = "INSERT INTO orders (`email`, `name`, `phone`, `order_date`, `street`, `home`, `part`, `appt`, `floor`, `comment`)
+            VALUES (:email, :name, :phone, :orderDate, :street, :home, :part, :appt, :floor, :comment)";
 
     $values = [
-      [':email', $this->email]
+      [':email', $this->email],
+      [':name', $name],
+      [':phone', $phone],
+      [':orderDate', $orderDate],
+      [':street', $street],
+      [':home', $home],
+      [':part', $part],
+      [':appt', $appt],
+      [':floor', $floor],
+      [':comment', $comment],
     ];
 
     $this->db->queryDB($sql, Database::EXECUTE, $values);
@@ -56,6 +65,22 @@ class Customer
 
     if ($result > 0) {
       return $result['id'];
+    }
+  }
+
+  public function getOrderCount()
+  {
+    $sql = "SELECT * FROM orders
+            WHERE `email` = :email";
+
+    $values = [
+      [':email', $this->email]
+    ];
+
+    $result = $this->db->queryDB($sql, Database::SELECTSINGLE, $values);
+
+    if ($result > 0) {
+      return $result['order_count'];
     }
   }
 
