@@ -26,7 +26,7 @@ $sumAge = 0;
 
 foreach ($decodedJSON as $users) {
 
-  if ($users['name'] === $users['name']) {
+  if ($users['name']) {
     $allUsers[$users['name']]++;
   } else {
     $allUsers[$users['name']] = 1;
