@@ -68,6 +68,7 @@ class Customer
     }
   }
 
+  // Get order count
   public function getOrderCount()
   {
     $sql = "SELECT * FROM orders

@@ -14,9 +14,4 @@ class Helper
 
     return count($postValues) !== count(array_filter($postValues));
   }
-
-  public function message($address, $orderId, $orderCount)
-  {
-    return 'Thank you for your new purchase. Your order will be delivered to:' .  '<br/>' . $address .  '<br/>' . 'Your ID is ' . $orderId . '<br/>' .  'This is your ' . $orderCount . ' order';
-  }
 }

@@ -29,14 +29,10 @@ if ($helper->isEmpty([$name, $phone, $email, $street, $home, $part, $appt, $floo
     $orderDate = date('Y-m-d H:i:s');
     $orderCount = $customer->getOrderCount();
 
-    $msg = $helper->message($address, $orderId, $orderCount);
-
-
-    if ($customer->isEmailTaken()) {
-      echo $msg;
-    } else {
+    if (!$customer->isEmailTaken()) {
       $customer->addCustomer($name, $phone, $orderDate, $street, $home, $part, $appt, $floor, $comment);
-      echo $msg;
     }
+
+    echo 'Thank you for your new purchase. Your order will be delivered to:' .  '<br/>' . $address .  '<br/>' . 'Your ID is ' . $orderId . '<br/>' .  'This is your ' . $orderCount . ' order';
   }
 }
