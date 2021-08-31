@@ -15,17 +15,17 @@ abstract class TariffAbstract implements TariffInterface
     $this->minutes = $minutes;
   }
 
-  public function countPrire(): int
+  public function countPrice(): int
   {
     $price = $this->distance * $this->pricePerKilometer + $this->minutes * $this->pricePerMinute;
 
     if ($this->services) {
       foreach ($this->services as $service) {
-        $service->apply($this, $price);
+        $result += $service->apply($this, $price);
       }
     }
 
-    return $price;
+    return $price + $result;
   }
 
   public function addService(ServiceInterface $service): TariffInterface

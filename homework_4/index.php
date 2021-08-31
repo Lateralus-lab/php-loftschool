@@ -11,10 +11,10 @@ require 'classes/TariffHour.php';
 
 $tariffBasic = new TariffBasic(5, 60);
 $tariffBasic->addService(new ServiceGPS(15));
-echo $tariffBasic->countPrire();
+echo $tariffBasic->countPrice();
 
 echo '<br/>';
 
 $tariffStudent = new TariffStudent(10, 100);
 $tariffStudent->addService(new ServiceDriver(100));
-echo $tariffStudent->countPrire();
+echo $tariffStudent->countPrice();

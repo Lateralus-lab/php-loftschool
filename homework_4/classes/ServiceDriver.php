@@ -2,15 +2,15 @@
 
 class ServiceDriver implements ServiceInterface
 {
-  private $price;
+  protected $serviceDriverPrice = 200;
 
   public function __construct(int $price)
   {
-    $this->price = $price;
+    $this->serviceDriverPrice = $price;
   }
 
-  public function apply(TariffInterface $tariff, &$price)
+  public function apply(TariffInterface $tariff)
   {
-    $price += $this->price;
+    return $this->serviceDriverPrice;
   }
 }
